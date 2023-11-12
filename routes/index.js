@@ -6,12 +6,14 @@ const router = express.Router();
 //const usersController = require('../src/controllers/users');
 
 const loginController = require('../src/controllers/login')
-
+const registerController = require('../src/controllers/register')
 router.use(express.json());
 //AUTH
 router.post('/login',loginController.login);
 
 //Users
+router.post('/register',registerController.register);
+
 //router.use('/users',authMiddleware);
 //router.get('/users', usersController.listar);
 //router.get('/users/:id', usersController.ver); /* la lee después de new, si estuviera invertido el orden, la leería como un id=new */
