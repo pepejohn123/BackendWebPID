@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('./../models/user');
+const cookieParser = require('cookie-parser');
 
 class LoginController{
     login(req,res){
@@ -11,6 +12,9 @@ class LoginController{
                 if(response){
                     const {_id, email} = response;
                     const token=jwt.sign({_id,email}, process.env.SECRET_KEY)
+                    console.log(token);
+                    res.cookie('jwtToken', token, { httpOnly: true });
+
                     res.send({token});
                 }
                 else{

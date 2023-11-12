@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path')
+const cookieParser = require('cookie-parser');
+
 dotenv.config();
 
 const routes = require('./routes/index');
@@ -19,6 +21,7 @@ app.get('/login',(req, res) /* importa el orden */ =>{
 app.use('/assets',express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 app.use('', routes); /* apartir de localhost:3000 */
 
