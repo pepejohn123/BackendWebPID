@@ -46,6 +46,7 @@ router.post('/register',registerController.register);
 
 router.use('/credentials',authMiddleware);
 router.get('/credentials',documentController.ver);
+router.post('/credentials',documentController.insertar);
 
 router.use('/upload',authMiddleware);
 router.post('/upload',uploadMiddleware.single('archivo'),(req,res)=>{
@@ -58,9 +59,4 @@ router.post('/upload',uploadMiddleware.single('archivo'),(req,res)=>{
     }
 });
 
-//router.get('/users', usersController.listar);
-//router.get('/users/:id', usersController.ver); /* la lee después de new, si estuviera invertido el orden, la leería como un id=new */
-/* router.post('/users/new',roleMiddleware('admin'),usersController.crear); /* la lee primero */
-//router.put('/users/:id', usersController.editar); /* la lee primero */
-//router.delete('/users/:id', usersController.eliminar); /* la lee primero */
 module.exports = router; /* se pone al final pa que esté todo definido cuando se llame */

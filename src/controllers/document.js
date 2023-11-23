@@ -3,8 +3,10 @@ const jwt = require('jsonwebtoken');
 
 class DocumentController {
     insertar(req, res) {
+        req.body.owner = req.user._id
         const documentData = req.body;
-        console.log(req.body);
+        
+        console.log(req.user._id);
         Document.create(documentData)
             .then(response => {
                 console.log(response);
@@ -22,8 +24,6 @@ class DocumentController {
     }
 
     ver(req, res) {
-        console.log("estás en el controller\n");
-        console.log(req.user._id);
         Document.find({ owner: req.user._id })
             .then(response => {
                 console.log('Respuesta: ', response);

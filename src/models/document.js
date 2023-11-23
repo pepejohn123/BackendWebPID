@@ -6,7 +6,10 @@ const schema = new Schema({
     name: {type:String,require:true},
     expedition_date: {type:Date,require:true},
     expiration_date: {type:Date,default: '01/01/2025'},
+    image_url: {type:String}
 
 });
 
 module.exports = model('document', schema);
+
+
